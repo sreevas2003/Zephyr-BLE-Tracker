@@ -1,0 +1,58 @@
+cmake:
+  application:
+    configuration-dir: '/home/sreevas2003/zephyrproject/zephyr-workspace/ble_asset_tracking/ble_mobile_beacon'
+    source-dir: '/home/sreevas2003/zephyrproject/zephyr-workspace/ble_asset_tracking/ble_mobile_beacon'
+  board:
+    name: 'esp32_devkitc'
+    path:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/boards/espressif/esp32_devkitc'
+    qualifiers: 'esp32/procpu'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/bindings'
+    files:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/boards/espressif/esp32_devkitc/esp32_devkitc_procpu.dts'
+    include-dirs:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/ambiq/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/atmel/include'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/bouffalolab/include'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/bouffalolab/include/zephyr'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/gigadevice/include'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/microchip/include'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/microchip/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/nuvoton/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/nxp/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/stm32/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/ti/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/include'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/include/zephyr'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/common'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/vendor'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/rx'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/x86'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/xtensa'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/sparc'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/riscv'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/posix'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/arm64'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/arm'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/arc'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts'
+  kconfig:
+    files:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/boards/espressif/esp32_devkitc/esp32_devkitc_procpu_defconfig'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/ble_asset_tracking/ble_mobile_beacon/prj.conf'
+    user-files:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/ble_asset_tracking/ble_mobile_beacon/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: '/home/sreevas2003/zephyr-sdk-0.16.8'
+  zephyr:
+    version: '4.3.99'
+    zephyr-base: '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr'
+version: '0.1.0'
+west:
+  command: '/home/sreevas2003/zephyrproject/zephyr-venv/bin/west build -b esp32_devkitc/esp32/procpu'
+  topdir: '/home/sreevas2003/zephyrproject/zephyr-workspace'
+  version: '1.5.0'

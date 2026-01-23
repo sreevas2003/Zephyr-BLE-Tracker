@@ -1,0 +1,4 @@
+west:
+  command: /home/sreevas2003/zephyrproject/zephyr-venv/bin/west build -b esp32_devkitc/esp32/procpu
+  topdir: /home/sreevas2003/zephyrproject/zephyr-workspace
+  version: 1.5.0

@@ -59,9 +59,9 @@ void main(void)
 
     LOG_INF("Advertising started");
 
-    // 🔥 BLINK LOOP
+/*    // 🔥 BLINK LOOP
     while (1) {
         gpio_pin_toggle(gpio_dev, LED_PIN);
         k_sleep(K_MSEC(500));
-    }
+    }*/
 }

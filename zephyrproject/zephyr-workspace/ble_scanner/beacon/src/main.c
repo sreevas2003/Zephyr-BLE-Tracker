@@ -1,53 +1,60 @@
 #include <zephyr/kernel.h>
 #include <zephyr/bluetooth/bluetooth.h>
 #include <zephyr/bluetooth/hci.h>
-#include <stdio.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/logging/log.h>
 
-/*
- * 🔥 Manufacturer Data Format
- * 0xAF 0xAF → YOUR PROJECT SIGNATURE
- * 0x01      → Version / type (optional)
- * 0x00      → Reserved
- */
-static const struct bt_data ad[] = {
-    /* Flags */
-    BT_DATA_BYTES(BT_DATA_FLAGS,
-                  (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
+LOG_MODULE_REGISTER(beacon, LOG_LEVEL_INF);
 
-    /* 🔥 Manufacturer specific data */
-    BT_DATA_BYTES(BT_DATA_MANUFACTURER_DATA,
-                  0xAF, 0xAF,   // Company ID (your signature)
-                  0x01,         // version
-                  0x00)         // reserved
-};
+// 🔥 LED CONFIG (ESP32 DevKit default = GPIO2)
+#define LED_NODE DT_ALIAS(led0)
 
-int main(void)
+#if !DT_NODE_HAS_STATUS(LED_NODE, okay)
+#error "LED not defined in devicetree"
+#endif
+
+static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED_NODE, gpios);
+
+void main(void)
 {
     int err;
 
-    printf("Beacon starting...\n");
+    LOG_INF("Beacon starting...");
 
+    // 🔹 Init LED
+    if (!gpio_is_ready_dt(&led)) {
+        LOG_ERR("LED device not ready");
+        return;
+    }
+
+    gpio_pin_configure_dt(&led, GPIO_OUTPUT_INACTIVE);
+
+    // 🔹 Init BLE
     err = bt_enable(NULL);
     if (err) {
-        printf("Bluetooth init failed (%d)\n", err);
-        return 0;
+        LOG_ERR("Bluetooth init failed (%d)", err);
+        return;
     }
 
-    /* Start non-connectable advertising */
-    err = bt_le_adv_start(BT_LE_ADV_NCONN,
-                          ad, ARRAY_SIZE(ad),
-                          NULL, 0);
+    LOG_INF("Bluetooth initialized");
 
+    // 🔹 Advertising data
+    static const struct bt_data ad[] = {
+        BT_DATA(BT_DATA_FLAGS, (uint8_t[]){BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR}, 1),
+        BT_DATA(BT_DATA_MANUFACTURER_DATA, (uint8_t[]){0xAF, 0xAF}, 2),
+    };
+
+    err = bt_le_adv_start(BT_LE_ADV_NCONN, ad, ARRAY_SIZE(ad), NULL, 0);
     if (err) {
-        printf("Advertising failed (%d)\n", err);
-        return 0;
+        LOG_ERR("Advertising failed (%d)", err);
+        return;
     }
 
-    printf("Beacon advertising...\n");
+    LOG_INF("Beacon advertising started");
 
+    // 🔥 LED BLINK LOOP
     while (1) {
-        k_sleep(K_SECONDS(1));
+        gpio_pin_toggle_dt(&led);
+        k_sleep(K_MSEC(500));   // 500ms blink
     }
-
-    return 0;
 }

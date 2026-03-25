@@ -1,0 +1,9 @@
+/ {
+    aliases {
+        led0 = &gpio0;
+    };
+};
+
+&gpio0 {
+    status = "okay";
+};

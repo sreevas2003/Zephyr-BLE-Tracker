@@ -1,0 +1,58 @@
+cmake:
+  application:
+    configuration-dir: '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/samples/hello_world'
+    source-dir: '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/samples/hello_world'
+  board:
+    name: 'qemu_x86'
+    path:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/boards/qemu/x86'
+    qualifiers: 'atom'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/bindings'
+    files:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/boards/qemu/x86/qemu_x86.dts'
+    include-dirs:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/ambiq/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/atmel/include'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/bouffalolab/include'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/bouffalolab/include/zephyr'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/gigadevice/include'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/microchip/include'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/microchip/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/nuvoton/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/nxp/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/stm32/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/modules/hal/ti/dts'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/include'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/include/zephyr'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/common'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/vendor'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/rx'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/x86'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/xtensa'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/sparc'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/riscv'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/posix'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/arm64'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/arm'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts/arc'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/dts'
+  kconfig:
+    files:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/boards/qemu/x86/qemu_x86_defconfig'
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/samples/hello_world/prj.conf'
+    user-files:
+     - '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr/samples/hello_world/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: '/home/sreevas2003/zephyr-sdk-0.17.0'
+  zephyr:
+    version: '4.2.0'
+    zephyr-base: '/home/sreevas2003/zephyrproject/zephyr-workspace/zephyr'
+version: '0.1.0'
+west:
+  command: '/home/sreevas2003/.local/bin/west build -p always -b qemu_x86 zephyr/samples/hello_world'
+  topdir: '/home/sreevas2003/zephyrproject/zephyr-workspace'
+  version: '1.5.0'
